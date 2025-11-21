@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+
+# CSS generato da SCSS
+src/css/style.css
+
+# File temporanei
+.DS_Store
+Thumbs.db
+*.log
+*.swp
