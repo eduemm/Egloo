@@ -1,0 +1,23 @@
+// Colori
+$body-bg-color: #fff;
+$p-color: #111111;
+$h1-color: #000000;
+$h2-color: #111111;
+$h3-color: #222222;
+$span-color: #333333;
+$item-hover-color: lighten($p-color, 20%);
+$button-hover-color: rgba(255, 255, 255, 0.2);
+// Font
+$h1-font: 'Roboto',
+sans-serif;
+$h2-font: 'Roboto',
+sans-serif;
+$h3-font: 'Roboto',
+sans-serif;
+$p-font: 'Open Sans',
+sans-serif;
+$span-font: 'normal';
+// Logo dimensione
+$logo-max-width: 150px;
+// Breakpoints
+$breakpoints: ( sm: 576px, md: 778px, lg: 990px, xl: 1024px, xxl: 1200px, xxxl: 1400px);
