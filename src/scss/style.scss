@@ -3,181 +3,122 @@
 @import 'mixins';
 
 /* -------------------------
-   Reset e stili base
+   Reset e base
 ------------------------- */
 
 body {
     margin: 0;
     padding: 0;
+    background-color: #ffffff; // pagina bianca
     box-sizing: border-box;
-    background-color: $body-bg-color;
-}
-
-h1 {
-    font-family: $h1-font;
-    color: $h1-color;
-}
-
-h2 {
-    font-family: $h2-font;
-    color: $h2-color;
-}
-
-h3 {
-    font-family: $h3-font;
-    color: $h3-color;
-}
-
-p {
-    font-family: $p-font;
-    color: $p-color;
-}
-
-span {
-    font-family: $span-font;
-    color: $span-color;
 }
 
 
 /* -------------------------
-   Header e menu
+   Header
 ------------------------- */
 
 .header {
-    background-color: grey;
-    padding: 10px 15px;
-    color: white;
+    background-color: #faf7f2; // beige ancora più chiaro
+    padding: 12px 20px;
     &__container {
         display: flex;
-        flex-direction: column; // mobile-first
+        flex-direction: column;
         align-items: center;
-        gap: 2px; // mobile compatto
+        gap: 14px; // distanza ottimale mobile
     }
     &__group {
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 4px;
     }
     &__item {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        padding: 2px 4px;
         text-align: center;
-        padding: 3px 6px;
-        transition: transform 0.2s ease, color 0.2s ease;
-        &:hover,
-        &:focus,
-        &:active {
+        transition: color .2s ease, transform .2s ease;
+        &:hover {
             color: $item-hover-color;
             transform: translateY(-1px);
         }
     }
+    /* LOGO */
     &__logo {
-        flex: 0 0 auto;
-        text-align: center;
+        padding: 8px 0; // più aria verticalmente nella versione mobile
         img {
             max-width: $logo-max-width;
-            height: auto;
             display: block;
             margin: 0 auto;
         }
     }
-    &__language {
-        flex: 0 0 auto;
-        text-align: center;
-        font-size: 0.9rem;
-        padding: 5px;
-        button {
-            type: button;
-            background: none;
-            border: 1px solid white;
-            color: white;
-            padding: 3px 6px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            transition: transform 0.2s ease;
-            /* hover/focus/active rimossi */
-        }
+    /* LINGUA */
+    &__language button {
+        background: none;
+        border: 1px solid #333;
+        color: #333;
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-size: 0.75rem;
     }
 }
 
 
 /* -------------------------
-   Breakpoints (mobile-first)
+   BREAKPOINT 576px (mobile largo)
 ------------------------- */
-
-
-/* Tablet piccolo >=576px */
 
 @include respond(sm) {
     .header__container {
-        gap: 3px;
+        gap: 18px;
     }
     .header__group {
-        gap: 3px;
+        gap: 5px;
+    }
+    .header__item {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* -------------------------
+   BREAKPOINT 990px (desktop)
+------------------------- */
+
+@include respond(lg) {
+    /* ➕ Aumentiamo distanza GRUPPI ↔ LOGO */
+    .header__logo {
+        padding: 0 45px; // distanza orizzontale maggiore ma equilibrata
+    }
+    .header__container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        /* aria maggiore tra blocchi */
+        gap: 65px;
+        padding: 0 50px; // più spazio dai bordi viewport
+    }
+    .header__group {
+        flex-direction: row;
+        gap: 14px;
     }
     .header__item {
         font-size: 1rem;
     }
+    .header__language {
+        margin-left: 30px;
+    }
 }
 
 
-/* Desktop >=990px: 3+logo+3 centrati */
+/* -------------------------
+   BREAKPOINT 1024px+
+------------------------- */
 
-@include respond(lg) {
-    .header__container {
-        flex-direction: row;
-        justify-content: space-between; // 3+logo+3 con margini minimi dai bordi
-        align-items: center;
-        padding: 0 20px; // poco spazio dai lati
-    }
-    .header__group--left,
-    .header__group--right {
-        flex-direction: row;
-        gap: 8px; // voci interne compatte ma omogenee
-        align-items: center;
-    }
-    .header__logo {
-        margin: 0 30px; // spazio intorno al logo, centrato
+@include respond(xl) {
+    .header__group {
+        gap: 16px;
     }
     .header__item {
         font-size: 1.05rem;
-    }
-}
-
-
-/* Desktop ≥1024px */
-
-@include respond(xl) {
-    .header__group--left,
-    .header__group--right {
-        gap: 10px;
-    }
-    .header__logo {
-        margin: 0 35px;
-    }
-    .header__item {
-        font-size: 1.1rem;
-    }
-}
-
-
-/* Desktop grandi */
-
-@include respond(xxl) {
-    .header__group--left,
-    .header__group--right {
-        gap: 12px;
-    }
-    .header__item {
-        font-size: 1.2rem;
-    }
-}
-
-@include respond(xxxl) {
-    .header__group--left,
-    .header__group--right {
-        gap: 14px;
-    }
-    .header__item {
-        font-size: 1.3rem;
     }
 }
