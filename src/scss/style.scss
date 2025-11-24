@@ -1,31 +1,70 @@
-@import 'variables';
-@import 'fonts';
-@import 'mixins';
+/* =========================
+   IMPORTS
+========================= */
 
-/* -------------------------
+@import 'variables.scss';
+@import 'fonts.scss';
+@import 'mixins.scss';
+
+/* =========================
    Reset e base
-------------------------- */
+========================= */
 
-body {
+* {
     margin: 0;
     padding: 0;
-    background-color: #ffffff; // pagina bianca
     box-sizing: border-box;
 }
 
+body {
+    background-color: $body-bg-color;
+    font-family: $p-font;
+    color: $p-color;
+}
 
-/* -------------------------
+
+/* =========================
+   Tipografia
+========================= */
+
+h1 {
+    font-family: $h1-font;
+    color: $h1-color;
+}
+
+h2 {
+    font-family: $h2-font;
+    color: $h2-color;
+}
+
+h3 {
+    font-family: $h3-font;
+    color: $h3-color;
+}
+
+p {
+    font-family: $p-font;
+    color: $p-color;
+}
+
+span {
+    font-family: $span-font;
+    color: $span-color;
+}
+
+
+/* =========================
    Header
-------------------------- */
+========================= */
 
 .header {
-    background-color: #faf7f2; // beige ancora più chiaro
+    background-color: #ffffff;
     padding: 12px 20px;
     &__container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 14px; // distanza ottimale mobile
+        gap: 14px;
     }
     &__group {
         display: flex;
@@ -36,22 +75,24 @@ body {
         font-size: 0.9rem;
         padding: 2px 4px;
         text-align: center;
-        transition: color .2s ease, transform .2s ease;
+        transition: color 0.2s ease, transform 0.2s ease;
         &:hover {
             color: $item-hover-color;
             transform: translateY(-1px);
         }
     }
-    /* LOGO */
     &__logo {
-        padding: 8px 0; // più aria verticalmente nella versione mobile
+        padding: 8px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         img {
             max-width: $logo-max-width;
+            width: 35%;
+            height: auto;
             display: block;
-            margin: 0 auto;
         }
     }
-    /* LINGUA */
     &__language button {
         background: none;
         border: 1px solid #333;
@@ -59,66 +100,183 @@ body {
         padding: 3px 6px;
         border-radius: 4px;
         font-size: 0.75rem;
+        &:hover {
+            background-color: $button-hover-color;
+        }
+    }
+    h1,
+    h2,
+    h3 {
+        white-space: nowrap;
     }
 }
 
 
-/* -------------------------
-   BREAKPOINT 576px (mobile largo)
-------------------------- */
+/* =========================
+   BREAKPOINTS
+========================= */
+
+
+/* Mobile compatto 320px - 768px */
 
 @include respond(sm) {
     .header__container {
-        gap: 18px;
+        gap: 10px;
+        padding: 10px 15px;
     }
     .header__group {
-        gap: 5px;
+        gap: 2px;
     }
     .header__item {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        padding: 1px 2px;
+    }
+    .header__logo {
+        padding: 6px 0;
+        img {
+            max-width: 120px;
+        }
     }
 }
 
 
-/* -------------------------
-   BREAKPOINT 990px (desktop)
-------------------------- */
+/* Desktop piccolo 991px - 1024px */
 
-@include respond(lg) {
-    /* ➕ Aumentiamo distanza GRUPPI ↔ LOGO */
-    .header__logo {
-        padding: 0 45px; // distanza orizzontale maggiore ma equilibrata
-    }
+@include respond(md) {
     .header__container {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        /* aria maggiore tra blocchi */
-        gap: 65px;
-        padding: 0 50px; // più spazio dai bordi viewport
+        gap: 45px;
+        padding: 0 20px;
     }
     .header__group {
         flex-direction: row;
-        gap: 14px;
+        gap: 10px;
     }
     .header__item {
+        font-size: 0.95rem;
+    }
+    .header__logo {
+        padding: 0 25px;
+        img {
+            max-width: 140px;
+            width: 37%;
+        }
+    }
+    .header h1 {
+        font-size: 1.15rem;
+    }
+    .header h2 {
         font-size: 1rem;
     }
-    .header__language {
-        margin-left: 30px;
+    .header h3 {
+        font-size: 0.95rem;
+    }
+    .header {
+        margin-bottom: 30px;
     }
 }
 
 
-/* -------------------------
-   BREAKPOINT 1024px+
-------------------------- */
+/* Desktop medio 1025px - 1200px */
 
-@include respond(xl) {
+@include respond(lg) {
+    .header__container {
+        gap: 55px;
+        padding: 0 30px; // padding più stretto per evitare wrap
+    }
+    .header__group {
+        gap: 12px; // riduzione gap tra voci
+    }
+    .header__item {
+        font-size: 11px;
+    }
+    .header__logo {
+        padding: 0 35px;
+        img {
+            max-width: 150px;
+            width: 40%;
+        }
+    }
+    .header h1 {
+        font-size: 1.3rem;
+    }
+    .header h2 {
+        font-size: 1.1rem;
+    }
+    .header h3 {
+        font-size: 1rem;
+    }
+    .header {
+        margin-bottom: 50px;
+        padding: 26px;
+    }
+}
+
+
+/* Desktop grande 1201px - 1400px */
+
+@include respond(xxl) {
+    .header__container {
+        gap: 65px;
+        padding: 0 50px;
+    }
     .header__group {
         gap: 16px;
     }
     .header__item {
-        font-size: 1.05rem;
+        font-size: 12px;
+    }
+    .header__logo {
+        padding: 0 45px;
+        img {
+            max-width: 160px;
+        }
+    }
+    .header__language {
+        margin-left: 30px;
+    }
+    .header h1 {
+        font-size: 1.4rem;
+    }
+    .header h2 {
+        font-size: 1.2rem;
+    }
+    .header h3 {
+        font-size: 1rem;
+    }
+    .header {
+        margin-bottom: 80px;
+        padding: 28px;
+    }
+}
+
+
+/* Desktop extra grande >1400px */
+
+@include respond(xxxl) {
+    .header__container {
+        gap: 75px;
+        padding: 0 60px;
+    }
+    .header__group {
+        gap: 18px;
+    }
+    .header__item {
+        font-size: 1.1rem;
+    }
+    .header__logo {
+        padding: 0 50px;
+        img {
+            max-width: 180px;
+        }
+    }
+    .header__language {
+        margin-left: 35px;
+    }
+    .header {
+        margin-bottom: 100px;
+        padding: 30px;
     }
 }
