@@ -54,7 +54,7 @@ span {
 
 
 /* =========================
-   Header
+   HEADER
 ========================= */
 
 .header {
@@ -75,6 +75,10 @@ span {
         font-size: 0.9rem;
         padding: 2px 4px;
         text-align: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
         transition: color 0.2s ease, transform 0.2s ease;
         &:hover {
             color: $item-hover-color;
@@ -90,7 +94,6 @@ span {
             max-width: $logo-max-width;
             width: 35%;
             height: auto;
-            display: block;
         }
     }
     &__language button {
@@ -98,26 +101,91 @@ span {
         border: 1px solid #333;
         color: #333;
         padding: 3px 6px;
-        border-radius: 4px;
+        border-radius: 14px;
         font-size: 0.75rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         &:hover {
             background-color: $button-hover-color;
         }
-    }
-    h1,
-    h2,
-    h3 {
-        white-space: nowrap;
     }
 }
 
 
 /* =========================
-   BREAKPOINTS
+   ARROW – ROTAZIONE
 ========================= */
 
+.has-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
 
-/* Mobile compatto 320px - 768px */
+.arrow-icon {
+    width: 20px;
+    height: auto;
+    display: inline-block;
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+    &.is-rotated {
+        transform: rotate(180deg);
+    }
+}
+
+
+/* =========================
+   HERO – Titolo centrale + messaggio
+========================= */
+
+.hero {
+    text-align: center;
+    padding: 40px 20px 60px;
+    &__title {
+        font-family: $h1-font;
+        color: $h1-color;
+        font-weight: 400;
+        margin-bottom: 16px;
+        @include respond(sm) {
+            font-size: 26px;
+        }
+        @include respond(md) {
+            font-size: 28px;
+        }
+        @include respond(lg) {
+            font-size: 34px;
+        }
+        @include respond(xxl) {
+            font-size: 40px;
+        }
+        @include respond(xxxl) {
+            font-size: 50px;
+        }
+    }
+    &__subtitle {
+        font-family: $p-font;
+        color: $p-color;
+        font-size: 1rem;
+        max-width: 600px;
+        margin: 0 auto;
+        @include respond(md) {
+            font-size: 1.1rem;
+        }
+        @include respond(lg) {
+            font-size: 1.2rem;
+        }
+        @include respond(xxl) {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+
+/* =========================
+   BREAKPOINTS HEADER
+========================= */
 
 @include respond(sm) {
     .header__container {
@@ -129,24 +197,20 @@ span {
     }
     .header__item {
         font-size: 0.9rem;
-        padding: 1px 2px;
+        padding: 2px 2px;
     }
-    .header__logo {
-        padding: 6px 0;
-        img {
-            max-width: 120px;
-        }
+    .arrow-icon {
+        width: 20px;
+    }
+    .header__logo img {
+        max-width: 120px;
     }
 }
-
-
-/* Desktop piccolo 991px - 1024px */
 
 @include respond(md) {
     .header__container {
         flex-direction: row;
         justify-content: center;
-        align-items: center;
         gap: 45px;
         padding: 0 20px;
     }
@@ -157,65 +221,37 @@ span {
     .header__item {
         font-size: 0.95rem;
     }
-    .header__logo {
-        padding: 0 25px;
-        img {
-            max-width: 140px;
-            width: 37%;
-        }
+    .arrow-icon {
+        width: 22px;
     }
-    .header h1 {
-        font-size: 1.15rem;
-    }
-    .header h2 {
-        font-size: 1rem;
-    }
-    .header h3 {
-        font-size: 0.95rem;
-    }
-    .header {
-        margin-bottom: 30px;
+    .header__logo img {
+        max-width: 140px;
+        width: 37%;
     }
 }
-
-
-/* Desktop medio 1025px - 1200px */
 
 @include respond(lg) {
     .header__container {
         gap: 55px;
-        padding: 0 30px; // padding più stretto per evitare wrap
+        padding: 0 30px;
     }
     .header__group {
-        gap: 12px; // riduzione gap tra voci
+        gap: 12px;
     }
     .header__item {
         font-size: 11px;
     }
-    .header__logo {
-        padding: 0 35px;
-        img {
-            max-width: 150px;
-            width: 40%;
-        }
+    .header__logo img {
+        max-width: 150px;
+        width: 40%;
     }
-    .header h1 {
-        font-size: 1.3rem;
-    }
-    .header h2 {
-        font-size: 1.1rem;
-    }
-    .header h3 {
-        font-size: 1rem;
+    .arrow-icon {
+        width: 24px;
     }
     .header {
-        margin-bottom: 50px;
         padding: 26px;
     }
 }
-
-
-/* Desktop grande 1201px - 1400px */
 
 @include respond(xxl) {
     .header__container {
@@ -228,32 +264,16 @@ span {
     .header__item {
         font-size: 12px;
     }
-    .header__logo {
-        padding: 0 45px;
-        img {
-            max-width: 160px;
-        }
+    .header__logo img {
+        max-width: 160px;
     }
     .header__language {
         margin-left: 30px;
     }
-    .header h1 {
-        font-size: 1.4rem;
-    }
-    .header h2 {
-        font-size: 1.2rem;
-    }
-    .header h3 {
-        font-size: 1rem;
-    }
-    .header {
-        margin-bottom: 80px;
-        padding: 28px;
+    .arrow-icon {
+        width: 26px;
     }
 }
-
-
-/* Desktop extra grande >1400px */
 
 @include respond(xxxl) {
     .header__container {
@@ -266,17 +286,13 @@ span {
     .header__item {
         font-size: 1.1rem;
     }
-    .header__logo {
-        padding: 0 50px;
-        img {
-            max-width: 180px;
-        }
+    .header__logo img {
+        max-width: 180px;
     }
     .header__language {
         margin-left: 35px;
     }
-    .header {
-        margin-bottom: 100px;
-        padding: 30px;
+    .arrow-icon {
+        width: 28px;
     }
 }

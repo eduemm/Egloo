@@ -1,45 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Egloo</title>
     <link rel="stylesheet" href="../src/css/style.css">
     <script src="./main.js" defer></script>
 </head>
 
 <body>
+    <!-- HEADER -->
     <header class="header">
         <div class="header__container">
 
             <!-- Gruppo voci sinistra -->
             <div class="header__group header__group--left">
-                <p class="header__item">IDENTITA'</p>
+                <p class="header__item has-arrow">
+                    IDENTITÀ
+                    <span class="arrow-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg" role="img"
+                            focusable="false">
+                            <path d="M7 9l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </p>
                 <p class="header__item">VINI</p>
                 <p class="header__item">DEVIN COSMETICA</p>
             </div>
 
             <!-- Logo centrale -->
             <div class="header__logo">
-                <img src="../src/img/logo.png" alt="Logo">
+                <img src="../src/img/logo.png" alt="Logo Egloo">
             </div>
 
             <!-- Gruppo voci destra -->
             <div class="header__group header__group--right">
-                <p class="header__item">ESPERIENZA</p>
+                <p class="header__item has-arrow">
+                    ESPERIENZA
+                    <span class="arrow-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg" role="img"
+                            focusable="false">
+                            <path d="M7 9l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </p>
                 <p class="header__item">GIFT CARD</p>
                 <p class="header__item">STORE LOCATOR</p>
             </div>
 
             <!-- Pulsante cambio lingua -->
             <div class="header__language">
-                <button type="button">IT</button>
+                <button type="button" class="has-arrow">
+                    IT
+                    <span class="arrow-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg" role="img"
+                            focusable="false">
+                            <path d="M7 9l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </button>
             </div>
 
         </div>
     </header>
+
+    <!-- SEZIONE HERO: titolo + messaggio -->
+    <section class="hero">
+        <h1 class="hero__title">PRENOTA SUBITO L'ESPERIENZA PIU' ADATTA A TE</h1>
+        <p class="hero__subtitle">Ti aspettiamo per farti scoprire il mondo, raccontato dai nostri vini e dalla nostra storia</p>
+    </section>
+
 </body>
 
 </html>
