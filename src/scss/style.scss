@@ -1,14 +1,10 @@
-/* =========================
-   IMPORTS
-========================= */
+/* ========================= IMPORTS ========================= */
 
 @import 'variables.scss';
 @import 'fonts.scss';
 @import 'mixins.scss';
 
-/* =========================
-   Reset e base
-========================= */
+/* ========================= Reset e base ========================= */
 
 * {
     margin: 0;
@@ -23,9 +19,7 @@ body {
 }
 
 
-/* =========================
-   Tipografia
-========================= */
+/* ========================= Tipografia ========================= */
 
 h1 {
     font-family: $h1-font;
@@ -53,9 +47,7 @@ span {
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* ========================= HEADER ========================= */
 
 .header {
     background-color: #ffffff;
@@ -113,9 +105,7 @@ span {
 }
 
 
-/* =========================
-   ARROW – ROTAZIONE
-========================= */
+/* ========================= ARROW – ROTAZIONE ========================= */
 
 .has-arrow {
     display: inline-flex;
@@ -136,9 +126,7 @@ span {
 }
 
 
-/* =========================
-   HERO – Titolo centrale + messaggio
-========================= */
+/* ========================= HERO – Titolo centrale + messaggio ========================= */
 
 .hero {
     text-align: center;
@@ -183,9 +171,7 @@ span {
 }
 
 
-/* =========================
-   BREAKPOINTS HEADER
-========================= */
+/* ========================= BREAKPOINTS HEADER ========================= */
 
 @include respond(sm) {
     .header__container {
@@ -294,5 +280,158 @@ span {
     }
     .arrow-icon {
         width: 28px;
+    }
+}
+
+
+/* ========================= CARDS ========================= */
+
+.cards {
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr; // Mobile e tablet
+        gap: 20px;
+        padding: 20px;
+        @include respond(lg) {
+            grid-template-columns: repeat(3, 1fr); // Desktop ≥1024px
+            gap: 30px;
+        }
+    }
+    .card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.25s ease;
+        &:hover {
+            transform: translateY(-4px);
+        }
+        &__img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        &__title {
+            font-family: $h3-font;
+            color: $h3-color;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        &__separator {
+            width: 100%;
+            height: 2px;
+            background-color: #e5e5e5;
+            margin-bottom: 12px;
+        }
+        &__description {
+            flex-grow: 1;
+            font-family: $p-font;
+            color: $p-color;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+        &__label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+            color: #0073e6;
+            .arrow-icon {
+                width: 18px;
+                transition: transform 0.3s ease;
+            }
+            &:hover .arrow-icon {
+                transform: translateX(4px);
+            }
+        }
+    }
+}
+
+
+/* ========================= FEATURE COMPONENT ========================= */
+
+.feature {
+    padding: 40px 20px;
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        padding: 16px;
+        @include respond(lg) {
+            flex-direction: row;
+            align-items: center;
+            gap: 30px;
+            padding: 24px;
+        }
+    }
+    /* Immagine grande */
+    &__img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 12px;
+        @include respond(md) {
+            height: 260px;
+        }
+        @include respond(lg) {
+            width: 50%;
+            height: 100%;
+        }
+    }
+    /* Colonna testo */
+    &__content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    &__title {
+        font-family: $h3-font;
+        color: $h3-color;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+        @include respond(lg) {
+            font-size: 1.6rem;
+        }
+    }
+    &__separator {
+        width: 100%;
+        height: 2px;
+        background-color: #e5e5e5;
+        margin-bottom: 16px;
+    }
+    &__description {
+        font-family: $p-font;
+        font-size: 1rem;
+        color: $p-color;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        @include respond(lg) {
+            font-size: 1.1rem;
+        }
+    }
+    &__label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        font-weight: 500;
+        color: #0073e6;
+        .arrow-icon {
+            width: 18px;
+            transition: transform 0.3s ease;
+        }
+        &:hover .arrow-icon {
+            transform: translateX(4px);
+        }
     }
 }
